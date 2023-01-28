@@ -88,6 +88,8 @@ DATABASES = {
     }
 }
 
+EMAIL_HOST_USER=os.environ.get('EMAIL_HOST_USER')
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
