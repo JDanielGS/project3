@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.checks import messages
+from django.contrib import messages
 from .models import NewsLettersUser
 from .forms import NewsLetterUserSingUpForm
 from django.conf import settings
@@ -24,7 +24,7 @@ def NewsLetter_SingUp(request):
             to_email=[instance.email]
 
 
-            html_template='newletters/email_templates/welcome.html'
+            html_template=r'C:\Users\usuario\project3\templates\newsletters\email_templates\welcome.html'
             html_message=render_to_string(html_template)
 
             message=EmailMessage(subject, html_message, from_email, to_email)
@@ -47,9 +47,9 @@ def NewslettersUnsuscribe(request):
         if NewsLettersUser.objects.filter(email=instance.email).exists():
             NewsLettersUser.objects.filter(email=instance.email).delete()
             messages.success(request, 'Your email has been deleted')
-    else:
-        print("Email Not Found.")
-        messages.warning(request, 'Email Not Found')
+        else:
+            print('Email Not Found.')
+            messages.warning(request, 'Email Not Found.')
     
     context={
         'form':form
